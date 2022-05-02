@@ -75,5 +75,20 @@
             }
             return EstaVazia();
         }
+        
+        public static PilhaModel CopiarPilha(PilhaModel pilha)
+        {
+            PilhaModel pilhaCopia = new PilhaModel(pilha.Pilha.Length);
+            PilhaModel pilhaIntermediaria = new PilhaModel(pilha.Pilha.Length);
+            while (!pilha.EstaVazia())
+            {
+                pilhaIntermediaria.Empilhar(pilha.Desempilhar());
+            }
+            while (!pilhaIntermediaria.EstaVazia())
+            {
+                pilhaCopia.Empilhar(pilhaIntermediaria.Desempilhar());
+            }
+            return pilhaCopia;
+        }
     }
 }
